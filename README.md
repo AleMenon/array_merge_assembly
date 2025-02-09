@@ -1,6 +1,6 @@
 <h1 align="center"> Merging arrays with assembly </h1>
-This project was created to learn the basics of assembly programming by solving a common problem: **merging two sorted arrays while removing duplicates**.
-The idea was first implemented in **C**, then manually translated into **x86-64 NASM assembly**. 
+This project was created to learn the basics of assembly programming by solving a common problem: <strong>merging two sorted arrays while removing duplicates</strong>.
+The idea was first implemented in <strong>C</strong>, then manually translated into <strong>x86-64 NASM assembly</strong>. 
 
  ## Repository Contents
 - **`merge_array.c`** – The initial implementation in C, later translated into assembly.
