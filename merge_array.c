@@ -2,8 +2,8 @@
 
 int main(){
     /*Arrays to merge*/
-    int array_a[] = {1,2,3,4,5};
-    int array_b[] = {4,5,6,7,8};
+    int array_a[] = {2, 4, 6, 8, 10};
+    int array_b[] = {1, 3, 5, 7, 9};
     int size_a=5, size_b=5;
 
     /*Other variables*/
@@ -19,16 +19,27 @@ int main(){
             break;
         }
         /*Merging*/
-        if(checkpoint_a<size_a && array_a[checkpoint_a]<array_b[checkpoint_b]){
-            array_principal[i]=array_a[checkpoint_a];
-            checkpoint_a++;
-        }
-        else{
-            if(checkpoint_b<size_b){
+        if(checkpoint_a<size_a && checkpoint_b<size_b){
+            if(array_a[checkpoint_a]<array_b[checkpoint_b]){
+                array_principal[i]=array_a[checkpoint_a];
+                checkpoint_a++;
+            }
+            else{
                 array_principal[i]=array_b[checkpoint_b];
                 checkpoint_b++;
             }
         }
+        else if(checkpoint_a>=size_a){
+            array_principal[i]=array_b[checkpoint_b];
+            checkpoint_b++;
+        }
+        else{
+            if(checkpoint_b>=size_b){
+                array_principal[i]=array_a[checkpoint_a];
+                checkpoint_a++;
+            }
+        }
+
         /*Removing duplicates*/
         if(i>0 && array_principal[i]==array_principal[i-1]){
             i--;
