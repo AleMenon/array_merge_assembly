@@ -1,12 +1,12 @@
 %include "io64.inc"
 
 section .data
-array_a dq 2, 4, 6, 8, 10              ;Em caso de alteração de vetores para teste, mantê-los ordenados
-array_b dq 1, 3, 5, 7, 9               
-size_a dq 5                            ;Em caso de aumento no tamanho de algum vetor, alterar o respectivo size aqui
+array_a dq 1, 2, 3, 4, 5               ;Keep the array sorted in case of other tests
+array_b dq 4, 5, 6, 7, 8               
+size_a dq 5                            ;Change the size of the respective array if needed
 size_b dq 5
 
-array_principal times 100 dq 0         ;Caso seja testado com size_a+size_b>100, alterar o tamanho do vetor principal aqui
+array_principal times 100 dq 0         ;If tested with size_a+size_b>100, change the size of the array_principal
 
 section .text
 global main
@@ -27,7 +27,7 @@ main:
    cmp rsi, r9
    jge .end_loop
 
-   cmp rax, qword [size_a]             ;Para se vetor a e b completamente verificados
+   cmp rax, qword [size_a]             ;Stop if array a and b fully verified
    jne .insert_a_b
    cmp rbx, qword [size_b]
    jne .insert_a_b
@@ -68,7 +68,7 @@ main:
    mov qword [r8+rsi*8], r14
    inc rax
                                     
-.removing_duplicates:                  ;Removendo números duplicados    
+.removing_duplicates:                  ;Removing duplicates
    cmp rsi, 0
    jle .end_if
    mov r14, qword [r8+rsi*8]
@@ -80,7 +80,7 @@ main:
 
 .end_if:
    inc rsi
-   jmp .loop                           ;Recomeça o looping
+   jmp .loop                           ;Restarting the loop
 
 .end_loop:
    xor rsi, rsi
@@ -93,7 +93,7 @@ main:
    inc rsi
    jmp .loop_print
 
-.end_loop_print:                       ;Print do valor mais alto e mais baixo do vetor
+.end_loop_print:                       ;Print of the lowest/highest value
    NEWLINE
    PRINT_STRING 'O menor numero eh: '
    PRINT_DEC 8, [r8]
