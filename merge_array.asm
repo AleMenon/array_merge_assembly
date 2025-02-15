@@ -95,10 +95,10 @@ main:
 
 .end_loop_print:                       ;Print of the lowest/highest value
    NEWLINE
-   PRINT_STRING 'O menor numero eh: '
+   PRINT_STRING 'The lowest number is: '
    PRINT_DEC 8, [r8]
    NEWLINE
-   PRINT_STRING 'O maior numero eh: '
+   PRINT_STRING 'The highest number is: '
    PRINT_DEC 8, [r8+(r9-1)*8]
 
    ret
